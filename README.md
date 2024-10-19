@@ -1,43 +1,45 @@
 # AnimalProfiling
 
-This app was created with Bootify.io - tips on working with the code [can be found here](https://bootify.io/next-steps/).
+## Introduction
+This is the backend of the project 
+## Installation
+1. Clone the repository
+2. open with intellij idea
+3. add a run configuration with the following parameters(Sprint Boot)
+    - Main class: com.animalprofiling.AnimalProfilingApplication
+4. Setup the database in the environment variables
+    - DB_URL
+    - DB_USER
+    - DB_PASSWORD
+5. Run the application
 
-## Development
+## API Documentation
+1. [Swagger](http://localhost:8080/swagger-ui.html)
 
-Update your local database connection in `application.yml` or create your own `application-local.yml` file to override
-settings for development.
+## Technologies
+1. Java
+2. Spring Boot
+3. Spring Data JPA
+4. Swagger
+5. Postgres
 
-During development it is recommended to use the profile `local`. In IntelliJ `-Dspring.profiles.active=local` can be
-added in the VM options of the Run Configuration after enabling this property in "Modify options".
+## Api acess table 
+| Endpoint                          | GET (ADMIN) | POST (ADMIN) | PUT (ADMIN) | DELETE (ADMIN) | GET (VETERINARIAN) | POST (VETERINARIAN) | PUT (VETERINARIAN) | DELETE (VETERINARIAN) | GET (CARETAKER) | POST (CARETAKER) | PUT (CARETAKER) | DELETE (CARETAKER) | GET (NUTRITIONIST) | POST (NUTRITIONIST) | PUT (NUTRITIONIST) | DELETE (NUTRITIONIST) |
+|----------------------------------|-------------|--------------|-------------|-----------------|---------------------|---------------------|---------------------|---------------------|-----------------|-----------------|-----------------|-----------------|---------------------|---------------------|---------------------|---------------------|
+| /api/users/current/**            | <span style="color:red">✔️</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:green">✔️</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">✔️</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">✔️</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/speciess/**                 | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/roles/**                    | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/reportTypes/**              | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">✔️</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/nutritionPlans/**           | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">✔️</span> | <span style="color:purple">✔️</span> | <span style="color:purple">✔️</span> | <span style="color:purple">✔️</span> |
+| /api/nutrients/**                | <span style="color:red">✔️</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">✔️</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">✔️</span> | <span style="color:purple">✔️</span> | <span style="color:purple">✔️</span> | <span style="color:purple">❌</span> |
+| /api/medicalHistories/**         | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:green">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">✔️</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/healthMonitorings/**        | <span style="color:red">✔️</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/feedingSchedules/**         | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">✔️</span> | <span style="color:blue">✔️</span> | <span style="color:blue">✔️</span> | <span style="color:blue">✔️</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/feedInventories/**          | <span style="color:red">✔️</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">✔️</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">✔️</span> | <span style="color:blue">✔️</span> | <span style="color:blue">✔️</span> | <span style="color:blue">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/educationalResources/**     | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">✔️</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/dataAnalysisReports/**      | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/availabilityStatuses/**     | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/animals/**                  | <span style="color:red">✔️</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">❌</span> | <span style="color:blue">✔️</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/alerts/**                   | <span style="color:red">✔️</span> | <span style="color:red">❌</span> | <span style="color:red">❌</span> | <span style="color:red">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">✔️</span> | <span style="color:green">✔️</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
+| /api/alertTypes/**               | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:red">✔️</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:green">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:blue">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> | <span style="color:purple">❌</span> |
 
-Lombok must be supported by your IDE. For IntelliJ install the Lombok plugin and enable annotation processing -
-[learn more](https://bootify.io/next-steps/spring-boot-with-lombok.html).
-
-After starting the application it is accessible under `localhost:8080`.
-
-## Build
-
-The application can be built using the following command:
-
-```
-mvnw clean package
-```
-
-Start your application with the following command - here with the profile `production`:
-
-```
-java -Dspring.profiles.active=production -jar ./target/animalProfiling-0.0.1-SNAPSHOT.jar
-```
-
-If required, a Docker image can be created with the Spring Boot plugin. Add `SPRING_PROFILES_ACTIVE=production` as
-environment variable when running the container.
-
-```
-mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=backend/animal-profiling
-```
-
-## Further readings
-
-* [Maven docs](https://maven.apache.org/guides/index.html)  
-* [Spring Boot reference](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)  
-* [Spring Data JPA reference](https://docs.spring.io/spring-data/jpa/reference/jpa.html)

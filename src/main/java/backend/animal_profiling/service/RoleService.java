@@ -9,7 +9,10 @@ import backend.animal_profiling.util.NotFoundException;
 import backend.animal_profiling.util.ReferencedWarning;
 import java.util.List;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
 
 
 @Service
@@ -53,11 +56,23 @@ public class RoleService {
         roleRepository.deleteById(roleId);
     }
 
+    public RoleDTO getCurrentRole() {
+        //get the role name from spring security context authority
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserRole= authentication.getAuthorities().stream().findFirst().get().getAuthority();
+        return mapToDTO(roleRepository.findByRoleName(currentUserRole), new RoleDTO());
+    }
+
+
     private RoleDTO mapToDTO(final Role role, final RoleDTO roleDTO) {
         roleDTO.setRoleId(role.getRoleId());
         roleDTO.setRoleName(role.getRoleName());
         return roleDTO;
     }
+
+
+
+
 
     private Role mapToEntity(final RoleDTO roleDTO, final Role role) {
         role.setRoleName(roleDTO.getRoleName());
@@ -76,5 +91,7 @@ public class RoleService {
         }
         return null;
     }
+
+
 
 }

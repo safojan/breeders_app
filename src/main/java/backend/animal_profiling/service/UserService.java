@@ -11,6 +11,9 @@ import backend.animal_profiling.util.NotFoundException;
 import backend.animal_profiling.util.ReferencedWarning;
 import java.util.List;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 
@@ -100,4 +103,11 @@ public class UserService {
         return null;
     }
 
+    public UserDTO getCurrentUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("hello from service"+authentication.getPrincipal());
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        System.out.println("hello from service"+userDetails.getUsername());
+        return mapToDTO(userRepository.findUserByEmail(userDetails.getUsername()), new UserDTO());
+    }
 }

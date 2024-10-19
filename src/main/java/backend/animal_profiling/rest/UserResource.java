@@ -1,6 +1,8 @@
 package backend.animal_profiling.rest;
 
+import backend.animal_profiling.model.RoleDTO;
 import backend.animal_profiling.model.UserDTO;
+import backend.animal_profiling.service.RoleService;
 import backend.animal_profiling.service.UserService;
 import backend.animal_profiling.util.ReferencedException;
 import backend.animal_profiling.util.ReferencedWarning;
@@ -25,9 +27,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserResource {
 
     private final UserService userService;
+    private final RoleService roleService;
 
-    public UserResource(final UserService userService) {
+    public UserResource(final UserService userService, RoleService roleService) {
         this.userService = userService;
+        this.roleService = roleService;
     }
 
     @GetMapping
@@ -65,4 +69,16 @@ public class UserResource {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/current/details")
+    public ResponseEntity<UserDTO> getCurrentUserDetails() {
+        UserDTO currentUserDTO =userService.getCurrentUser();
+                return ResponseEntity.ok(currentUserDTO);
+
+    }
+
+    @GetMapping("/current/role")
+    public ResponseEntity<RoleDTO> getCurrentUserRole() {
+        RoleDTO currentUserRole =roleService.getCurrentRole();
+        return ResponseEntity.ok(currentUserRole);
+    }
 }
